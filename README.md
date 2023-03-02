@@ -1,5 +1,5 @@
 # PS1 Disc-Based Game ID
-Available in this repository are IPS patches for PS1 BIOS files that will allow games running off of disc to automatically send Game ID data to a MemCard Pro, allowing it to auto-select a virtual memory card page for each game you play. This doesn't require the user to boot any separate software or exploit, plays the nostalgic PS1 boot splash like a regular startup, and should hopefully maintain full software compatibility.
+Available in this repository are xdelta patches for PS1 BIOS files that will allow games running off of disc to automatically send Game ID data to a MemCard Pro, allowing it to auto-select a virtual memory card page for each game you play. This doesn't require the user to boot any separate software or exploit, plays the nostalgic PS1 boot splash like a regular startup, and should hopefully maintain full software compatibility.
 
 ### A note on PS1Digital support:
 The PS1Digital can also utilize the Game ID data in order to automatically select video settings on a per-game basis. Unfortunately, I do not have one to test with or a working PS1 model that would support it anyways. If you have access to a PS1Digital and would like to test this feature, please let me know! As it stands, I expect that Game ID for PS1Digital would work correctly if you have a MemCard Pro inserted, but will likely NOT work with regular memory cards. This is because of the way that the MemCard Pro acknowledges the Game ID commands being sent to it, pinging back data that lets the patched BIOS know to continue. The PS1Digital cannot send this acknowledgement ping back, so I'm unsure of how to properly send the entire message without a MemCard Pro involved (though I suspect it's possible since I believe a PS1Digital + XStation combo can do so).
@@ -24,22 +24,19 @@ Apply the supplied xdelta patch file to your original .bin BIOS dump using [Delt
 ### Final checksums after patching will be
 | BIOS version | CRC-32 |
 | --- | --- |
-| SCPH-1000 (NTSC-J) | |
-| SCPH-1001 (NTSC-U/C) | |
-| SCPH-1002 (PAL) | |
-| SCPH-3000 (NTSC-J) | |
-| SCPH-3500 (NTSC-J) | |
-| SCPH-5500 (NTSC-J) | |
-| SCPH-5501 (NTSC-U/C) | |
-| SCPH-5502/5552 (PAL) | |
-| SCPH-7000 (NTSC-J) | |
-| SCPH-7001/7501/7503/9001 (NTSC-U/C) | | 
-| SCPH-7002/7502/9002 (PAL) | |
-| SCPH-7003 (NTSC-J) | |
-| SCPH-100 (NTSC-J) | |
+| SCPH-1001 (NTSC-U/C) | 1A55B1DF |
+| SCPH-3500 (NTSC-J) | BE8D6D5A |
+| SCPH-5500 (NTSC-J) | FDAA84DF |
+| SCPH-5501 (NTSC-U/C) | A0CC750A |
+| SCPH-5502/5552 (PAL) | FAC63257 |
+| SCPH-7000 (NTSC-J) | EEC07383 |
+| SCPH-7001/7501/7503/9001 (NTSC-U/C) | 7D62E658 | 
+| SCPH-7002/7502/9002 (PAL) | 1CC1BA51 |
+| SCPH-7003 (NTSC-J) | A0CC750A |
+| SCPH-100 (NTSC-J) | DFEFBB65 |
 | SCPH-101 (NTSC-U/C) | 3A5B1E02 |
-| SCPH-102A (PAL) | |
-| SCPH-102B (PAL) | |
+| SCPH-102A (PAL) | 26EDBC47 |
+| SCPH-102B (PAL) | 5BF8420B |
 
 ## How to insert patched BIOS .bin into flasher CD
 Documentation forthcoming.
@@ -71,7 +68,7 @@ A board from Will's Console Modifications requires that pin 7 be carefully lifte
 4) Boot up your modified flasher disc via FreePSXBoot, a modchip, or the disc swap method and follow its instructions
 5) Reconnect /WE pin to VCC and test your new BIOS!
 
-## Supported hardware
+## Supported firmware
 ## Tested
 
 ## Untested
@@ -81,10 +78,7 @@ A board from Will's Console Modifications requires that pin 7 be carefully lifte
 - SCPH-7001/7501 (should work for 7503 and 9001 as well)
 - SCPH-101
 
-
 ### NTSC-J
-- SCPH-1000**
-- SCPH-3000**
 - SCPH-3500**
 - SCPH-5500
 - SCPH-7000 (should work for 9000 as well)
@@ -92,13 +86,31 @@ A board from Will's Console Modifications requires that pin 7 be carefully lifte
 - SCPH-100
 
 ### PAL
-- SCPH-1002**
 - SCPH-5502/5552
 - SCPH-7002/7502/9002
 - SCPH-102A
 - SCPH-102B
 
 ** - Motherboards for these models may contain a 40-pin BIOS chip. I am not currently aware of any readily available replacement PCBs for these units, and the significant pinout differences would necessitate an adapter PCB.
+
+## Unsupported firmware
+- Requires an alternative code injection point
+  - SCPH-1000 (NTSC-J)
+  - SCPH-1002 (PAL)
+  - SCPH-3000 (NTSC-J)
+- Unverified dumps (per PSXDEV)
+  - SCPH-5903 (NTSC-J?)
+  - SCPH-7000W (NTSC-J?)
+  - SCPH-7500 (NTSC-J)
+  - SCPH-7503 (NTSC-J?)
+  - SCPH-9000 (NTSC-J)
+  - SCPH-9001 (NTSC-U/C)
+  - SCPH-9003 (NTSC-J?)
+  - SCPH-102 (PAL)
+  - SCPH-102C (PAL)
+  - SCPH-103 (NTSC-J?)
+
+You can very likely use any firmware you want on any hardware revision (barring of course special models like the Net Yaroze or other devkits)
 
 ## Todo
 - Hardware verification
