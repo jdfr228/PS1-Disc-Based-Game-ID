@@ -16,6 +16,30 @@ The PS1Digital can also utilize the Game ID data in order to automatically selec
 - Either an EEPROM programmer if you have a blank flash chip OR a way to boot a burned CD-R/homebrew on your PS1 (FreePSXBoot, modchip, disc swap method) if you have an existing BIOS mod or flash chip pre-flashed with stock BIOS
   - **Blank flash chip-** If you have no way of flashing an individual SST 39VF040 chip, you can purchase a [FlashCatUSB XPORT](https://www.embeddedcomputers.net/products/FlashcatUSB_XPORT/) plus a [TSOP-32 (Type-B) adapter](https://www.embeddedcomputers.net/products/ParallelAdapters/), or use mi213's [TL866 adapter](https://oshpark.com/shared_projects/b8rGXXJj) (+ a hot air station to remove the flash chip after flashing) for TL866ii family flashers readily available from Aliexpress (or the [socketed](https://oshpark.com/shared_projects/coznPX7v) versions of mi213's boards to avoid needing a hot air station).
   - **Pre-flashed chip-** Follow instructions below to install a wire to allow your flash chip to be re-written with the patched BIOS.  Unfortunately, as the BIOS images are 512KB in size, a burned CD-R is required and the flashing program cannot be loaded fully through FreePSXBoot
+  
+## Installing replacement BIOS PCB
+
+### Note that this is intended for pre-flashed chips. You cannot install a blank flash chip on a PS1 and then flash it with the CD-based program: some sort of functional BIOS must be present in order to reflash
+
+1) Locate your BIOS chip (IC102) and make sure it is a 32-pin chip (32 marking in one of the corners)
+
+![image](https://user-images.githubusercontent.com/24398594/222358899-5d3cfce6-00b1-449d-8af3-7e4354929205.png)
+
+2) Carefully remove the chip with a hot air rework station, or if you do not have one, by clipping the legs of each pin with a pair of sharp flush cutters
+
+![image](https://user-images.githubusercontent.com/24398594/222359016-1ceaa052-a1f3-44a4-be67-9b52fcc1d3e9.png)
+
+3) If you used flush cutters, use your soldering iron to wipe away any leftover feet, and then clean away the old solder with a soldering wick and clean the area with isopropyl alcohol
+
+![image](https://user-images.githubusercontent.com/24398594/222359108-7788d434-35e0-4e5b-9ddb-62c2668c530b.png)
+
+4) Prepare your adapter PCB by aligning the flash chip as best you can, tacking down one corner with lots of flux and a little bit of solder (I used too much on one side here), checking the alignment for the other side, and tacking down the opposite corner.  If alignment looks good, continue to work the rest of the pins, again using a lot of flux and *very* little solder
+
+![image](https://user-images.githubusercontent.com/24398594/222359200-ad92b1c9-ce72-4350-94fd-572e476bb923.png)
+
+5) Check for shorts on any adjacent pins of the flash chip. Most pins on the adapter are next to each other. Bridge your pad for /WE and VCC if necessary, and solder your adapter in place. Again use lots of flux, and plenty of solder this time (much harder to bridge these pins). Clean the surrounding areas of the motherboard, and the pins on the flash chip with alcohol when you are done.
+
+![image](https://user-images.githubusercontent.com/24398594/222359309-a4336171-9620-463c-a6a1-3f30acb46b05.png)
 
 ## How to patch your BIOS dump .bin
 
@@ -91,8 +115,6 @@ A board from Will's Console Modifications requires that pin 7 be carefully lifte
 
 4) Boot up your modified flasher disc via FreePSXBoot, a modchip, or the disc swap method and follow its instructions (press L1 to detect BIOS chip, select PSX-XBOO.BIN file)
 5) Reconnect /WE pin to VCC and test your new BIOS!
-
-((picture forthcoming))
 
 ## Supported firmware
 ## Tested
