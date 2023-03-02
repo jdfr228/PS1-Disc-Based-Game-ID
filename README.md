@@ -39,7 +39,29 @@ Apply the supplied xdelta patch file to your original .bin BIOS dump using [Delt
 | SCPH-102B (PAL) | 5BF8420B |
 
 ## How to insert patched BIOS .bin into flasher CD
-Documentation forthcoming.
+1) Download the latest release of [mkpsxiso](https://github.com/Lameguy64/mkpsxiso) and the latest modified flashing program from this repo.
+
+2) Move your .bin and .cue files for the flashing program to your extracted mkpsxiso bin directory.
+
+![image](https://user-images.githubusercontent.com/24398594/222319093-cf6d3f3c-e81b-4cf9-abdb-2391f12bb28d.png)
+
+3) Open a command line and navigate to the bin folder, and run the following command:
+```
+dumpsxiso.exe -s ./flasher.xml BIOSFlasher.bin
+```
+
+4) The files from the flashing CD should now be in the bin directory:
+
+![image](https://user-images.githubusercontent.com/24398594/222319502-39e69eb5-abb2-4387-8cd9-49522e032455.png)
+
+5) Rename your patched BIOS file to PSX-XBOO.BIN, replace the file in the bin directory, and then run the following command in the command line:
+```
+mkpsxiso.exe flasher.xml -o BIOSFlasherModified.bin -c BIOSFlasherModified.cue
+```
+
+6) Test the BIOSFlasherModified.cue image in an emulator, and then burn it to a CD using the .cue file. I recommend IMGBurn and, for a modern CD burner, MAX speed setting. Newer burners are optimized for the highest speed and often give worse results burning at forced lower speeds!
+
+![image](https://user-images.githubusercontent.com/24398594/222325783-5263a90b-f1d4-411d-8848-72e5b5e49f54.png)
 
 ### Currently supported replacement BIOS ROM chips for software flashing:
 - AMD 29F040B
@@ -58,15 +80,19 @@ Adding support for additional flash chips is quite simple, if they support byte-
 
 The recommended OSHPark board made for SST 39VF040 flash chips exposes the /WE pin on a convenient pad (that needs to be bridged afterwards)
 
-![image](https://user-images.githubusercontent.com/24398594/222043663-48d4d6f4-c71e-4ab5-bfca-150cd81e77d3.png)
+![image](https://user-images.githubusercontent.com/24398594/222325916-9b7b5976-c01b-4ef8-be39-c64d0664b4c8.png)
 
 2) **(Will's board only)** Disconnect this pin from VCC
 A board from Will's Console Modifications requires that pin 7 be carefully lifted and soldered to. I was unable to do this personally, which is why I don't recommend his board. Attempting to sever the trace may be easier.
 3) Wire this pin to the CPU's /SWR0 or /WR pin (pin 100)
+
 ((picture forthcoming of hopefully convenient test point on Slim PSOne))
 ((picture forthcoming of pin on serial port for earlier models))
-4) Boot up your modified flasher disc via FreePSXBoot, a modchip, or the disc swap method and follow its instructions
+
+4) Boot up your modified flasher disc via FreePSXBoot, a modchip, or the disc swap method and follow its instructions (press L1 to detect BIOS chip, select PSX-XBOO.BIN file)
 5) Reconnect /WE pin to VCC and test your new BIOS!
+
+((picture forthcoming))
 
 ## Supported firmware
 ## Tested
@@ -114,8 +140,6 @@ You can very likely use any firmware you want on any hardware revision (barring 
 
 ## Todo
 - Hardware verification
-- Creating and verifying patches on each available BIOS revision
-- Create documentation for modifying megavolt85's BIOS flashing program
 - Add pictures to documentation for BIOS flashing modifications
 
 ## Special thanks
