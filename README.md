@@ -63,7 +63,7 @@ Apply the supplied xdelta patch file to your original .bin BIOS dump using [Delt
 | SCPH-102B (PAL) | 5BF8420B |
 
 ## How to insert patched BIOS .bin into flasher CD
-1) Download the latest release of [mkpsxiso](https://github.com/Lameguy64/mkpsxiso) and the latest modified flashing program from this repo.
+1) Download the latest release of [mkpsxiso](https://github.com/Lameguy64/mkpsxiso) and the latest modified flashing program from this repo's releases page.
 
 2) Move your .bin and .cue files for the flashing program to your extracted mkpsxiso bin directory.
 
@@ -111,6 +111,7 @@ A board from Will's Console Modifications requires that pin 7 be carefully lifte
 3) Wire this pin to the CPU's /SWR0 or /WR pin (pin 100)
 
 ((picture forthcoming of hopefully convenient test point on Slim PSOne))
+
 ((picture forthcoming of pin on serial port for earlier models))
 
 4) Boot up your modified flasher disc via FreePSXBoot, a modchip, or the disc swap method and follow its instructions (press L1 to detect BIOS chip, select PSX-XBOO.BIN file)
@@ -167,5 +168,5 @@ You can very likely use any firmware you want on any hardware revision (barring 
 ## Special thanks
 - nocash for his amazing help with developing this patch and for all his work on no$psx and extensive PSX documentation.  This project would not exist without him, and as he is currently forced to stay in a small room with family, I'd highly recommend supporting [his Patreon](https://www.patreon.com/martin_korth) or [donating directly](http://problemkaputt.de/donate.htm) if you are able!
 - 8bitmods for developing the wonderful MemCard Pro and even offering me an advance unit for testing this patch with!
-- megavolt85 for developing and releasing the source for their BIOS patching program.
+- megavolt85 for developing and releasing the source for their BIOS patching program. The source included in this repo has been modified by me to remove copyrighted BIOS files and add support for the SST 39VF040 flash chip.
 - mi213 for their PS1 Flash BIOS project. See all their OSHPark uploads [here](https://oshpark.com/profiles/mi213).
