@@ -119,7 +119,7 @@ A board from Will's Console Modifications requires that pin 7 be carefully lifte
 
 ## Supported firmware
 ## Tested
-- SCPH-5502/5552
+- SCPH-5502/5552 (PAL)
 
 ## Untested
 ### NTSC-U/C
