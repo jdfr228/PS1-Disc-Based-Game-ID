@@ -1,10 +1,10 @@
 # PS1 Disc-Based Game ID
-Available in this repository are xdelta patches for PS1 BIOS files that will allow games running off of disc to automatically send Game ID data to a MemCard Pro, allowing it to auto-select a virtual memory card page for each game you play. This doesn't require the user to boot any separate software or exploit, plays the nostalgic PS1 boot splash like a regular startup, and should hopefully maintain full software compatibility.
+Available in this repository are xdelta patches for PS1 BIOS files that will allow games running off of disc or PSIO to automatically send Game ID data to a MemCard Pro, allowing it to auto-select a virtual memory card page for each game you play. This doesn't require the user to boot any separate software or exploit, plays the nostalgic PS1 boot splash like a regular startup, and should hopefully maintain full software compatibility.
 
 ### A note on PS1Digital support:
 The PS1Digital can also utilize the Game ID data in order to automatically select video settings on a per-game basis. Unfortunately, I do not have one to test with or a working PS1 model that would support it anyways. If you have access to a PS1Digital and would like to test this feature, please let me know! As it stands, I expect that Game ID for PS1Digital would work correctly if you have a MemCard Pro inserted, but will likely NOT work with regular memory cards. This is because of the way that the MemCard Pro acknowledges the Game ID commands being sent to it, pinging back data that lets the patched BIOS know to continue. The PS1Digital cannot send this acknowledgement ping back, so I'm unsure of how to properly send the entire message without a MemCard Pro involved (though I suspect it's possible since I believe a PS1Digital + XStation combo can do so).
 
-## WARNING- As of the time of publishing these patches are *untested* on real hardware. Users who wish to test these patches should have an easy way to modify their BIOS back to stock in case something goes wrong.
+## WARNING- As of the time of publishing these patches have had limited testing on real hardware. Users who wish to test these patches should have an easy way to modify their BIOS back to stock in case something goes wrong.
 
 ## Requirements
 - A supported original BIOS dump (.bin format)
@@ -119,6 +119,7 @@ A board from Will's Console Modifications requires that pin 7 be carefully lifte
 
 ## Supported firmware
 ## Tested
+- SCPH-5502/5552
 
 ## Untested
 ### NTSC-U/C
@@ -135,7 +136,6 @@ A board from Will's Console Modifications requires that pin 7 be carefully lifte
 - SCPH-100
 
 ### PAL
-- SCPH-5502/5552
 - SCPH-7002/7502/9002
 - SCPH-102A
 - SCPH-102B
