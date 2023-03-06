@@ -46,21 +46,21 @@ The PS1Digital can also utilize the Game ID data in order to automatically selec
 Apply the supplied xdelta patch file to your original .bin BIOS dump using [DeltaPatcher](https://www.romhacking.net/utilities/704/), or another xdelta patching tool.
 
 ### Final checksums after patching will be
-| BIOS version | CRC-32 |
-| --- | --- |
-| SCPH-1001 (NTSC-U/C) | 1A55B1DF |
-| SCPH-3500 (NTSC-J) | BE8D6D5A |
-| SCPH-5500 (NTSC-J) | FDAA84DF |
-| SCPH-5501 (NTSC-U/C) | A0CC750A |
-| SCPH-5502/5552 (PAL) | FAC63257 |
-| SCPH-7000 (NTSC-J) | EEC07383 |
-| SCPH-7001/7501/7503/9001 (NTSC-U/C) | 7D62E658 | 
-| SCPH-7002/7502/9002 (PAL) | 1CC1BA51 |
-| SCPH-7003 (NTSC-J) | A0CC750A |
-| SCPH-100 (NTSC-J) | DFEFBB65 |
-| SCPH-101 (NTSC-U/C) | 3A5B1E02 |
-| SCPH-102A (PAL) | 26EDBC47 |
-| SCPH-102B (PAL) | 5BF8420B |
+| BIOS version | Original CRC-32 | Patched CRC-32 |
+| --- | --- | --- |
+| SCPH-1001 (NTSC-U/C) | 37157331 | 1A55B1DF |
+| SCPH-3500 (NTSC-J) | BC190209 | BE8D6D5A |
+| SCPH-5500 (NTSC-J) | FF3EEB8C | FDAA84DF |
+| SCPH-5501 (NTSC-U/C) | 8D8CB7E4 | A0CC750A |
+| SCPH-5502/5552 (PAL) | D786F0B9 | FAC63257 |
+| SCPH-7000 (NTSC-J) | EC541CD0 | EEC07383 |
+| SCPH-7001/7501/7503/9001 (NTSC-U/C) | 502224B6 | 7D62E658 |
+| SCPH-7002/7502/9002 (PAL) | 318178BF | 1CC1BA51 |
+| SCPH-7003 (NTSC-J) | 8D8CB7E4 | A0CC750A |
+| SCPH-100 (NTSC-J) | F2AF798B | DFEFBB65 |
+| SCPH-101 (NTSC-U/C) | 171BDCEC | 3A5B1E02 |
+| SCPH-102A (PAL) | 0BAD7EA9 | 26EDBC47 |
+| SCPH-102B (PAL) | 76B880E5 | 5BF8420B |
 
 ## How to insert patched BIOS .bin into flasher CD
 1) Download the latest release of [mkpsxiso](https://github.com/Lameguy64/mkpsxiso) and the latest modified flashing program from this repo's releases page.
