@@ -50,6 +50,7 @@ Apply the supplied xdelta patch file to your original .bin BIOS dump using [Delt
 | --- | --- | --- |
 | SCPH-1001 (NTSC-U/C) | 37157331 | 1A55B1DF |
 | SCPH-3500 (NTSC-J) | BC190209 | BE8D6D5A |
+| SCPH-5000 (NTSC-J) | 24FC7E17 | 26681144 |
 | SCPH-5500 (NTSC-J) | FF3EEB8C | FDAA84DF |
 | SCPH-5501 (NTSC-U/C) | 8D8CB7E4 | A0CC750A |
 | SCPH-5502/5552 (PAL) | D786F0B9 | FAC63257 |
@@ -130,6 +131,7 @@ A board from Will's Console Modifications requires that pin 7 be carefully lifte
 
 ### NTSC-J
 - SCPH-3500**
+- SCPH-5000 (may be a bad dump per PSXDEV)
 - SCPH-5500
 - SCPH-7000 (should work for 9000 as well)
 - SCPH-7003 (identical to NTSC-U/C SCPH-5501)
