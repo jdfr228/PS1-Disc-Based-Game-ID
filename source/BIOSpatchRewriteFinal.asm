@@ -37,13 +37,16 @@ sendMemCardData:
         sw      r24,STACKLEN-68(r30)
         sw      r25,STACKLEN-72(r30)
 
+        jal     stopPad
+        nop
+
         ; Load I/O Address constants on upper temp registers
         li      r25,0x1F801040          ; 0x1F801040 - JOY_DATA
                                         ; 0x1F801044 - JOY_STAT
                                         ; 0x1F80104A - JOY_CTRL
                                         ; 0x1F801048 - JOY_MODE
                                         ; 0x1F80104E - JOY_BAUD
-        li      r12,0x0020b077          ; 0x0020B077 - bootStringAddress
+        li      r12,0x0020b075          ; 0x0020B075 - bootStringAddress
 
         ; i = [r30 + 24]
         ; gameIDBuf = [r30 + 28] (grows upwards from there)
@@ -61,12 +64,16 @@ sendMemCardData:
         sb      r8,29(r30)      ; gameIDBuf[1] = 0x21
         sb      zero,30(r30)    ; gameIDBuf[2] = 0x00
 
-        ; Move bootStringAddress back a bit if there are no spaces in SYSTEM.CNF file (e.g. Ape Escape)
+        ; Move bootStringAddress forward if there are spaces in SYSTEM.CNF file
+        li      r10,10
+BOOTSTRINGSPACECORRECTION:
         lbu     r9,0(r12)       ; r9 = bootStringAddress[0]
         li      r8,0x63         ; r8 = 'c'
         beq     r8,r9,BOOTSTRINGCORRECT         ; if bootStringAddres[0] != 'c'...
         nop
-        li      r12,0x0020b075                  ; ... move it back two bytes
+        subi    r10,r10,1
+        bgtz    r10,BOOTSTRINGSPACECORRECTION
+        addiu   r12,r12,1                       ; ... move it forward a byte
 
 BOOTSTRINGCORRECT:
         sw      zero,24(r30)    ; i = 0                 (801FFCD0)
@@ -136,6 +143,13 @@ WHILENOTSEMICOLON:
         lw      r26,STACKLEN-80(r30)
         lw      r25,STACKLEN-132(r30)
 
+        ; Throw in one more stopPad to improve changes of ID string not being mangled in transit
+        ; Destroys r26 (and some temps we don't care about right now)
+        jal     stopPad
+        nop
+        lw      r26,STACKLEN-80(r30)
+
+
         ; Set up registers for Joypad/Memory ports
         li      r8,0x000D               ;
         sh      r8,0x8(r25)             ; JOY_MODE = 0x000D (8-bit, no parity, 1x baud multiplier)
@@ -193,6 +207,9 @@ CHECKCOMMANDLENGTH:
 
 FINALBITTIMEOUT:
 ACKTIMEOUT:
+        jal     startPad
+        nop
+
         ; restore temp registers before returning
         lw      r2,STACKLEN-12(r30)
         lw      r3,STACKLEN-16(r30)
@@ -222,6 +239,11 @@ ACKTIMEOUT:
 ; in: r4 - byte to send, r5 - isFinalByte boolean ---- destroys: r9, r10, r11
 sendByte:
         sb      r4,0(r25)               ; JOY_DATA[0] = r4
+
+        ; exitCriticalSection()
+        ;li      r4,0x02
+        ;syscall
+        ;lw      r26,STACKLEN-80(r30)
 
         ; Skip timeout check if isFinalByte = 1
         bne     r5,zero,ACKEND
@@ -280,6 +302,17 @@ startCard:
         addiu   r10,zero,0x00b0
         jr      r10
         addiu   r9,zero,0x004b
+
+startPad:
+        addiu   r10,zero,0x00b0
+        jr      r10
+        addiu   r9,zero,0x0013
+
+; Destroys r2,r3,r4,r5,r6,r8,r9,r10,r14,r15,r26
+stopPad:
+        addiu   r10,zero,0x00b0
+        jr      r10
+        addiu   r9,zero,0x0014
 
 .align 800h                             ; zerofill to ..7FFh to align with original garbage mem's length
 .import PSX-BIOS.ROM,0x66000,-1         ; Import remainder of original BIOS file
