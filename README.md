@@ -2,14 +2,14 @@
 Available in this repository are xdelta patches for PS1 BIOS files that will allow games running off of disc or PSIO to automatically send Game ID data to a MemCard Pro or SD2PSX, as well as a PS1Digital, Retro GEM, and even a BlueRetro receiver, if you have one of these memory cards installed.  Game ID data allows these memory cards to auto-select a virtual memory card page for each game you play, and for HDMI mods and BlueRetro to allow for per-game settings. This doesn't require the user to boot any separate software or exploit, plays the nostalgic PS1 boot splash like a regular startup, and should hopefully maintain full software compatibility.
 
 ### A note on PS1Digital/Retro GEM/BlueRetro support:
-In the future, these may be able to support Game ID functionality without needing a specific memory card, but for now, since these devices do not send the required ACK signals when receiving a Game ID command, you must have a MemCard Pro or SD2PSX installed.
+In the future, these may be able to support Game ID functionality without needing a specific memory card, but for now, since these devices do not send the required ACK signals when receiving a Game ID command, you must have a MemCard Pro or SD2PSX installed.  PS1Digital and Retro GEM are yet to be tested fully.
 
 ## WARNING- As of the time of publishing these patches have had limited testing on real hardware. Users who wish to test these patches should have an easy way to modify their BIOS back to stock in case something goes wrong.
 
 ## Supported hardware
 - 8bitmods MemCard Pro
 - SD2PSX
-- If you have either of the above, you will also gain additional functionality with:
+- If you have either of the above, you *should* also gain additional functionality with:
   - PSIO
   - PS1Digital/Retro GEM
   - BlueRetro bluetooth receiver
