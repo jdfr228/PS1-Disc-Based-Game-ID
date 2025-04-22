@@ -4,7 +4,7 @@ Available in this repository are xdelta patches for PS1 BIOS files that will all
 ### A note on PS1Digital/Retro GEM/BlueRetro support:
 In the future, these may be able to support Game ID functionality without needing a specific memory card, but for now, since these devices do not send the required ACK signals when receiving a Game ID command, you must have a MemCard Pro or SD2PSX installed.  PS1Digital and Retro GEM are yet to be tested fully.
 
-## WARNING- As of the time of publishing these patches have had limited testing on real hardware. Users who wish to test these patches should have an easy way to modify their BIOS back to stock in case something goes wrong.
+## NOTE- As of April 2025, these patches have had limited testing when it comes to covering all hardware/firmware configurations. Users who wish to test these patches should have an easy way to modify their BIOS back to stock in case something goes wrong.  This project takes no liability for any damage incurred when modifying your own console.
 
 ## Supported hardware
 - 8bitmods MemCard Pro
@@ -71,8 +71,10 @@ Apply the supplied xdelta patch file to your original .bin BIOS dump using [Delt
 | SCPH-102B (PAL) | 76B880E5 | 78275EFD |
 
 ## Supported firmware
-## Tested
+## Tested on hardware
 - SCPH-5502/5552 (PAL)
+- SCPH-7002 (PAL)
+- SCPH-7502 (PAL)
 - SCPH-101 (US)
 
 ## Untested
@@ -90,7 +92,7 @@ Apply the supplied xdelta patch file to your original .bin BIOS dump using [Delt
 - SCPH-100
 
 ### PAL
-- SCPH-7002/7502/9002
+- SCPH-9002 (should be identical to SCPH-7002/7502, likely works!)
 - SCPH-102A
 - SCPH-102B
 
