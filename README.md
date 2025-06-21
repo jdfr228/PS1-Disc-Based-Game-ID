@@ -4,7 +4,7 @@ Available in this repository are xdelta patches for PS1 BIOS files that will all
 ### A note on PS1Digital/Retro GEM/BlueRetro support:
 In the future, these may be able to support Game ID functionality without needing a specific memory card, but for now, since these devices do not send the required ACK signals when receiving a Game ID command, you must have a MemCard Pro or SD2PSX installed.  PS1Digital and Retro GEM are yet to be tested fully.
 
-## NOTE- As of April 2025, these patches have had limited testing when it comes to covering all hardware/firmware configurations. Users who wish to test these patches should have an easy way to modify their BIOS back to stock in case something goes wrong.  This project takes no liability for any damage incurred when modifying your own console.
+## NOTE- As of June 2025, these patches have worked well for those using them, but testing remains limited when it comes to covering all hardware/firmware configurations. Users who wish to test these patches should have an easy way to modify their BIOS back to stock in case something goes wrong.  This project takes no liability for any damage incurred when modifying your own console.
 
 ## Supported hardware
 - 8bitmods MemCard Pro
@@ -19,8 +19,8 @@ In the future, these may be able to support Game ID functionality without needin
 - A replacement EEPROM chip for your system's BIOS and an adapter board to match the console pinout
   - SST 39VF040 recommended
   - Order your own boards [from OSHPark](https://oshpark.com/shared_projects/F5tR8dhr) and flash the chip yourself
-  - OR if you want you can try to contact Will at [Will's Console Modifications in the UK](https://www.willsconsolemodifications.co.uk/index.php?route=product/product&product_id=55) to ask if he'd be willing to provide a board + flash chip with pre-patched BIOS.  Please note that Will has not endorsed this and I have not reached out to him- other providers may hopefully offer options in the future, including some myself once more testing has been performed.
-  - All existing adapter boards **require your system to have a 32-pin BIOS chip** (see Supported Hardware section below for systems that potentially do not have a 32-pin chip)
+  - Another adapter board option is now available, particular for 40-pin BIOS - https://github.com/Electroanalog/PSX-Flash-BIOS/
+  - Most systems' original BIOS will have a 32-pin BIOS chip, though some older models use a 40-pin chip (see Supported Hardware section below for systems that potentially do not have a 32-pin chip)
 - If you have blank chips, an EEPROM programmer (The CD-based flasher is deprecated), OR a kind individual selling pre-flashed chips in some capacity.
   - For blank chips, if you have no way of flashing an individual SST 39VF040 chip, you can purchase a [FlashCatUSB XPORT](https://www.embeddedcomputers.net/products/FlashcatUSB_XPORT/) plus a [TSOP-32 (Type-B) adapter](https://www.embeddedcomputers.net/products/ParallelAdapters/), or use mi213's [TL866 adapter](https://oshpark.com/shared_projects/b8rGXXJj) (+ a hot air station to remove the flash chip after flashing) for TL866ii family flashers readily available from Aliexpress (or the [socketed](https://oshpark.com/shared_projects/coznPX7v) versions of mi213's boards to avoid needing a hot air station).
   
@@ -96,7 +96,7 @@ Apply the supplied xdelta patch file to your original .bin BIOS dump using [Delt
 - SCPH-102A
 - SCPH-102B
 
-** - Motherboards for these models may contain a 40-pin BIOS chip. I am not currently aware of any readily available replacement PCBs for these units, and the significant pinout differences would necessitate an adapter PCB.
+** - Motherboards for these models may contain a 40-pin BIOS chip. The newer adapter board from the [PSX-Flash-BIOS project](https://github.com/Electroanalog/PSX-Flash-BIOS/) will need to be used.
 
 ## Unsupported firmware
 - Requires an alternative code injection point
@@ -126,6 +126,7 @@ You can very likely use any firmware you want on any hardware revision (barring 
 - megavolt85 for developing and releasing the source for their BIOS patching program, even though it didn't end up working. The source included in earlier releases has been modified by me to remove copyrighted BIOS files and add support for the SST 39VF040 flash chip.
 - mi213 for their PS1 Flash BIOS project and for graciously providing BIOS boards and helping with testing. See all their OSHPark uploads [here](https://oshpark.com/profiles/mi213).
 - bbsan for developing the SD2PSX, arranging to send one to me for testing, and helping test himself.
+- Wilson for developing a new adapter board for older 40-pin models.
 
 ---
 
