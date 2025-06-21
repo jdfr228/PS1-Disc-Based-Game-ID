@@ -126,7 +126,7 @@ You can very likely use any firmware you want on any hardware revision (barring 
 - megavolt85 for developing and releasing the source for their BIOS patching program, even though it didn't end up working. The source included in earlier releases has been modified by me to remove copyrighted BIOS files and add support for the SST 39VF040 flash chip.
 - mi213 for their PS1 Flash BIOS project and for graciously providing BIOS boards and helping with testing. See all their OSHPark uploads [here](https://oshpark.com/profiles/mi213).
 - bbsan for developing the SD2PSX, arranging to send one to me for testing, and helping test himself.
-- Wilson for developing a new adapter board for older 40-pin models.
+- Electroanalog for developing a new adapter board for older 40-pin models.
 
 ---
 
