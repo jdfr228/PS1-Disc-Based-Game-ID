@@ -72,16 +72,16 @@ Apply the supplied xdelta patch file to your original .bin BIOS dump using [Delt
 
 ## Supported firmware
 ## Tested on hardware
+- SCPH-1001** (US)
 - SCPH-5502/5552 (PAL)
 - SCPH-7002 (PAL)
+- SCPH-7001/7501 (should work for 7503 and 9001 as well)
 - SCPH-7502 (PAL)
 - SCPH-101 (US)
 
-## Untested
+## Untested but should work
 ### NTSC-U/C
-- SCPH-1001**
 - SCPH-5501
-- SCPH-7001/7501 (should work for 7503 and 9001 as well)
 
 ### NTSC-J
 - SCPH-3500**
